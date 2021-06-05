@@ -2,7 +2,7 @@
     <div>
         <form @submit.prevent="submit_form">
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
+                <label class="form-label">Title</label>
                 <input type="text" v-model="fields.title" class="form-control" aria-describedby="titleHelp">
                 <div id="titleHelp" class="form-text">Your eye-cathcing title goes here.</div>
                 
@@ -23,8 +23,11 @@
                 </div> -->
             </div>
             <div class="mb-3">
-                <label for="text" class="form-label">Post text</label>
-                <textarea v-model="fields.post_text" rows="10" class="form-control"></textarea>
+                <label class="form-label">Post text</label>
+                <!-- <textarea v-model="fields.post_text" rows="10" class="form-control" id="post-text"></textarea> -->
+
+                <ckeditor :editor="editor" v-model="fields.post_text"></ckeditor>
+
                 <div id="textHelp" class="form-text">Your winning contents goes here.</div>
 
                 <div class="alert alert-warning d-flex align-items-center alert-dismissible fade show" role="alert" v-if="errors && errors.post_text">
@@ -47,6 +50,8 @@
 </template>
 
 <script>
+    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+    
     export default {
         data() {
             return {
@@ -56,6 +61,7 @@
                 },
                 errors: {},
                 form_submitting: false,
+                editor: ClassicEditor,
             }
         },
 

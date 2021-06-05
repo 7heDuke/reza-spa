@@ -18,7 +18,7 @@ class PostController extends Controller
 
     public function store(StorePostRequest $request) 
     {
-        // sleep (1);
+        sleep (1);
 
         $post = Post::create($request->validated());
 
@@ -35,5 +35,12 @@ class PostController extends Controller
         $post->update($request->validated());
 
         return new PostResource($post);
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return response()->noContent();
     }
 }

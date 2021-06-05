@@ -17,10 +17,12 @@
                 <th scope="row" class="text-center">{{ post.id }}</th>
                 <td>{{ post.title }}</td>
                 <!-- <td>{{ post.post_text.substring(0, 200) }} ...</td> -->
-                <td>{{ post.post_text }}</td>
+                <td v-html="post.post_text"></td>
                 <td class="text-center">{{ post.created_at }}</td>
-                <td>
-                    <router-link :to="{ name: 'posts.edit', params: {id: post.id} }">Edit</router-link>
+                <td class="text-center">
+                    <router-link class="btn btn-primary" :to="{ name: 'posts.edit', params: {id: post.id} }">Edit</router-link>
+                    <button @click="delete_post(post.id)" class="btn btn-link text-danger">Delete</button>
+
                 </td>
             </tr>
         </tbody>
@@ -44,6 +46,28 @@
                 axios.get('/api/posts?page=' + page).then(response => {
                 this.posts = response.data;
                 });
+            },
+
+            delete_post(post_id) {
+                this.$swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to restore post!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: 'secondary',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        axios.delete('/api/posts/' + post_id)
+                            .then(response => {
+                                this.$swal({icon: 'success', title: 'Post deleted successfully'});
+                                this.getResults();
+                            }).catch(error => {
+                            this.$swal({ icon: 'error', title: 'Error happened'});
+                        });
+                    }
+                })
             }
         }
     }

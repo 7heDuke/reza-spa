@@ -5,8 +5,12 @@
  */
 
 const { default: VueRouter } = require('vue-router');
+
 const { default: VueSweetalert2 } = require('vue-sweetalert2');
+
 import 'sweetalert2/dist/sweetalert2.min.css';
+
+import CKEditor from '@ckeditor/ckeditor5-vue2';
 
 require('./bootstrap');
 
@@ -14,8 +18,9 @@ window.Vue = require('vue').default;
 
 Vue.use(VueRouter);
 
-// import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(VueSweetalert2);
+
+Vue.use(CKEditor);
 
 import App from "./components/App.vue";
 import PostsIndex from "./components/Posts/Index.vue";
@@ -67,6 +72,6 @@ Vue.component('pagination', require('laravel-vue-pagination'))
 
 const app = new Vue({
     el: '#app',
-    components: { App },
+    components: { App, ckeditor: CKEditor.component },
     router
 });

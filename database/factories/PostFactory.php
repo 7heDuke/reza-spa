@@ -24,7 +24,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->realText(50),
-            'post_text' => $this->faker->realText(500),
+            'post_text' => $this->faker->realText(300),
             'created_at' => now(),
         ];
     }

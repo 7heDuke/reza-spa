@@ -24,7 +24,10 @@
             </div>
             <div class="mb-3">
                 <label for="text" class="form-label">Post text</label>
-                <textarea v-model="fields.post_text" rows="10" class="form-control"></textarea>
+                <!-- <textarea v-model="fields.post_text" rows="10" class="form-control"></textarea> -->
+
+                <ckeditor :editor="editor" v-model="fields.post_text" rows="10"></ckeditor>
+
                 <div id="textHelp" class="form-text">Your winning contents goes here.</div>
 
                 <div class="alert alert-warning d-flex align-items-center alert-dismissible fade show" role="alert" v-if="errors && errors.post_text">
@@ -47,6 +50,8 @@
 </template>
 
 <script>
+    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
     export default {
         data() {
             return {
@@ -56,6 +61,7 @@
                 },
                 errors: {},
                 form_submitting: false,
+                editor: ClassicEditor,
             }
         },
 
