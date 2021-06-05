@@ -3,21 +3,21 @@
     <table class="table table-hover
     ">
     <caption>List of posts</caption>
-        <thead class="table-dark">
+        <thead class="table">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Post Content</th>
-                <th scope="col">Created at</th>
-                <th scope="col">Actions</th>
+                <th scope="col" class="col-1 text-center">#</th>
+                <th scope="col" class="col-3 text-center">Title</th>
+                <th scope="col" class="col-4 text-center">Post Content</th>
+                <th scope="col" class="col-2 text-center">Created at</th>
+                <th scope="col" class="col-2 text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="post in posts.data" v-bind:key="post.id">
-                <th scope="row">{{ post.id }}</th>
+                <th scope="row" class="text-center">{{ post.id }}</th>
                 <td>{{ post.title }}</td>
                 <td>{{ post.post_text.substring(0, 200) }} ...</td>
-                <td>{{ post.created_at }}</td>
+                <td class="text-center">{{ post.created_at }}</td>
                 <td></td>
             </tr>
         </tbody>

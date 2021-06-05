@@ -1,8 +1,9 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">Compasslist Demo</a>
+                <a href="/" class="navbar-brand mb-0 h1" aria-current="page">Compasslist Demo</a>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -11,16 +12,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <router-link to="/" class="nav-link active" aria-current="page">Home</router-link>
+                            <router-link exact :to="{ name: 'posts.index' }" class="nav-link">Post list</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link to="/posts/create" class="nav-link active" aria-current="page">Create post</router-link>
+                            <router-link exact :to="{ name: 'posts.create' }" class="nav-link">Create post</router-link>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    <!-- <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </nav>

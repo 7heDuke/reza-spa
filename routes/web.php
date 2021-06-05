@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+// 'any' disabled Laravel front-end routing. This however will also deactivate 404 links. But for simplicity of this demo project, I will not use the 404.
+
+// '.*' will catch any custom links typed by user at the search bar and redirect none.
+
+Route::get('/{any}', function () {
     return view('welcome');
-});
+})->where('any', '.*');

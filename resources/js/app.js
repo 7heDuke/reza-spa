@@ -15,6 +15,7 @@ Vue.use(VueRouter);
 import App from "./components/App.vue";
 import PostsIndex from "./components/Posts/Index.vue";
 import PostsCreate from "./components/Posts/Create.vue";
+import { post } from "jquery";
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -33,11 +34,13 @@ const router = new VueRouter({
     routes: [
         {
             path: '/',
-            component: PostsIndex
+            component: PostsIndex,
+            name: 'posts.index',
         },
         {
-            path: '/posts/create',
-            component: PostsCreate
+            path: '/create',
+            component: PostsCreate,
+            name: 'posts.create',
         }
     ]
 })
