@@ -4,10 +4,17 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { default: VueRouter } = require('vue-router');
+
 require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+Vue.use(VueRouter);
+
+import App from "./components/App.vue";
+import PostsIndex from "./components/Posts/Index.vue";
+import PostsCreate from "./components/Posts/Create.vue";
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -19,7 +26,21 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('posts-index', require('./components/Posts/Index.vue').default);
+// Vue.component('posts-index', require('./components/Posts/Index.vue').default);
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        {
+            path: '/',
+            component: PostsIndex
+        },
+        {
+            path: '/posts/create',
+            component: PostsCreate
+        }
+    ]
+})
 
 Vue.component('pagination', require('laravel-vue-pagination'))
 
@@ -31,4 +52,6 @@ Vue.component('pagination', require('laravel-vue-pagination'))
 
 const app = new Vue({
     el: '#app',
+    components: { App },
+    router
 });

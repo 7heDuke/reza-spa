@@ -1,16 +1,20 @@
 <template>
 <div>
-    <table class="table">
+    <table class="table table-hover
+    ">
+    <caption>List of posts</caption>
         <thead class="table-dark">
             <tr>
-                <th>Title</th>
-                <th>Post Content</th>
-                <th>Created At</th>
-                <th>Actions</th>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Post Content</th>
+                <th scope="col">Created at</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="post in posts.data" v-bind:key="post.id">
+                <th scope="row">{{ post.id }}</th>
                 <td>{{ post.title }}</td>
                 <td>{{ post.post_text.substring(0, 200) }} ...</td>
                 <td>{{ post.created_at }}</td>
