@@ -70,9 +70,11 @@
                 this.form_submitting = true;
                 axios.put('/api/posts/' + this.$route.params.id, this.fields)
                 .then(response => {
+                    this.$swal({icon: 'success', title: 'Post successfully updated'});
                     this.$router.push('/');
                     this.form_submitting = false;
                 }).catch(error => {
+                    this.$swal({icon: 'error', title: 'Something is wrong'});
                     if (error.response.status === 422) {
                         this.errors = error.response.data.errors;
                     }

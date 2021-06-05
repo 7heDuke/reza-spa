@@ -5,6 +5,8 @@
  */
 
 const { default: VueRouter } = require('vue-router');
+const { default: VueSweetalert2 } = require('vue-sweetalert2');
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 require('./bootstrap');
 
@@ -12,11 +14,15 @@ window.Vue = require('vue').default;
 
 Vue.use(VueRouter);
 
+// import VueSweetalert2 from 'vue-sweetalert2';
+Vue.use(VueSweetalert2);
+
 import App from "./components/App.vue";
 import PostsIndex from "./components/Posts/Index.vue";
 import PostsCreate from "./components/Posts/Create.vue";
 import PostsEdit from "./components/Posts/Edit.vue";
-import { post } from "jquery";
+import Vue from 'vue';
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
