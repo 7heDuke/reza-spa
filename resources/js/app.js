@@ -15,6 +15,7 @@ Vue.use(VueRouter);
 import App from "./components/App.vue";
 import PostsIndex from "./components/Posts/Index.vue";
 import PostsCreate from "./components/Posts/Create.vue";
+import PostsEdit from "./components/Posts/Edit.vue";
 import { post } from "jquery";
 /**
  * The following block of code may be used to automatically register your
@@ -41,6 +42,11 @@ const router = new VueRouter({
             path: '/create',
             component: PostsCreate,
             name: 'posts.create',
+        },
+        {
+            path: '/edit/:id',
+            component: PostsEdit,
+            name: 'posts.edit',
         }
     ]
 })
